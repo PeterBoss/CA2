@@ -3,6 +3,7 @@ package Entity;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -15,7 +16,10 @@ public class Phone implements Serializable {
     @Id //notice no generation strategy (dont know if this is correct)
     private String number;
     private String description;
-
+    
+    @ManyToOne
+    private InfoEntity entity;
+    
     public Phone() {
     }
 
@@ -35,4 +39,12 @@ public class Phone implements Serializable {
         this.description = description;
     }
 
+    public InfoEntity getEntity() {
+        return entity;
+    }
+
+    public void setEntity(InfoEntity entity) {
+        this.entity = entity;
+    }
+    
 }
