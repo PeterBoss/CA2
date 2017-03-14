@@ -25,6 +25,66 @@ public class EntityFacade {
         return emf.createEntityManager();
     }
 
+    public void editPerson(Person person) {
+        EntityManager em = getEntityManager();
+        try {
+            em.merge(person);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+
+    public void editHobby(Hobby hobby) {
+        EntityManager em = getEntityManager();
+        try {
+            em.merge(hobby);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+    
+    public void editCompany(Company company) {
+        EntityManager em = getEntityManager();
+        try {
+            em.merge(company);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+    
+    public void editAddress(Address address) {
+        EntityManager em = getEntityManager();
+        try {
+            em.merge(address);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+    
+    public void editCityInfo(CityInfo cityInfo) {
+        EntityManager em = getEntityManager();
+        try {
+            em.merge(cityInfo);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+    
+    public void editPhone(Phone phone) {
+        EntityManager em = getEntityManager();
+        try {
+            em.merge(phone);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+    
     public void createPerson(Person p) {
         EntityManager em = getEntityManager();
         try {
@@ -42,6 +102,54 @@ public class EntityFacade {
         try {
             em.getTransaction().begin();
             em.persist(h);
+            em.getTransaction().commit();
+
+        } finally {
+            em.close();
+        }
+    }
+
+    public void createCompany(Company c) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(c);
+            em.getTransaction().commit();
+
+        } finally {
+            em.close();
+        }
+    }
+
+    public void createAddress(Address a) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(a);
+            em.getTransaction().commit();
+
+        } finally {
+            em.close();
+        }
+    }
+
+    public void createCityInfo(CityInfo ci) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(ci);
+            em.getTransaction().commit();
+
+        } finally {
+            em.close();
+        }
+    }
+
+    public void createPhone(Phone p) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(p);
             em.getTransaction().commit();
 
         } finally {
