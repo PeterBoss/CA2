@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 
-
 /**
  *
  * @author Peter
@@ -15,15 +14,12 @@ public class Person extends InfoEntity implements Serializable {
 
     private String firstName;
     private String lastName;
-    
-   
+
     @ManyToMany
     private List<Hobby> hobbies;
 
     public Person() {
     }
-
-   
 
     public String getFirstName() {
         return firstName;
@@ -40,14 +36,13 @@ public class Person extends InfoEntity implements Serializable {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    
-      public void addHobby(Hobby h) {
-        hobbies.add(h);
 
+    public void addHobby(Hobby h) {
+        hobbies.add(h);
     }
 
     public List<Hobby> getHobbies() {
         return hobbies;
     }
-    
+
 }
