@@ -23,9 +23,14 @@ public class InfoEntity implements Serializable {
     private Integer id;
 
     private String email;
+   
     @OneToMany(mappedBy = "entity")
     private List<Phone> phones;
-
+    
+    
+    @OneToMany(mappedBy = "entity")
+    private List<Address> address;
+    
     public InfoEntity() {
     }
     
