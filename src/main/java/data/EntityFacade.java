@@ -25,66 +25,9 @@ public class EntityFacade {
         return emf.createEntityManager();
     }
 
-    public void editPerson(Person person) {
-        EntityManager em = getEntityManager();
-        try {
-            em.merge(person);
-            em.getTransaction().commit();
-        } finally {
-            em.close();
-        }
-    }
-
-    public void editHobby(Hobby hobby) {
-        EntityManager em = getEntityManager();
-        try {
-            em.merge(hobby);
-            em.getTransaction().commit();
-        } finally {
-            em.close();
-        }
-    }
-    
-    public void editCompany(Company company) {
-        EntityManager em = getEntityManager();
-        try {
-            em.merge(company);
-            em.getTransaction().commit();
-        } finally {
-            em.close();
-        }
-    }
-    
-    public void editAddress(Address address) {
-        EntityManager em = getEntityManager();
-        try {
-            em.merge(address);
-            em.getTransaction().commit();
-        } finally {
-            em.close();
-        }
-    }
-    
-    public void editCityInfo(CityInfo cityInfo) {
-        EntityManager em = getEntityManager();
-        try {
-            em.merge(cityInfo);
-            em.getTransaction().commit();
-        } finally {
-            em.close();
-        }
-    }
-    
-    public void editPhone(Phone phone) {
-        EntityManager em = getEntityManager();
-        try {
-            em.merge(phone);
-            em.getTransaction().commit();
-        } finally {
-            em.close();
-        }
-    }
-    
+    /*
+    Person CRUD
+     */
     public void createPerson(Person p) {
         EntityManager em = getEntityManager();
         try {
@@ -94,111 +37,6 @@ public class EntityFacade {
         } finally {
             em.close();
         }
-
-    }
-
-    public void createHobby(Hobby h) {
-        EntityManager em = getEntityManager();
-        try {
-            em.getTransaction().begin();
-            em.persist(h);
-            em.getTransaction().commit();
-
-        } finally {
-            em.close();
-        }
-    }
-
-    public void createCompany(Company c) {
-        EntityManager em = getEntityManager();
-        try {
-            em.getTransaction().begin();
-            em.persist(c);
-            em.getTransaction().commit();
-
-        } finally {
-            em.close();
-        }
-    }
-
-    public void createAddress(Address a) {
-        EntityManager em = getEntityManager();
-        try {
-            em.getTransaction().begin();
-            em.persist(a);
-            em.getTransaction().commit();
-
-        } finally {
-            em.close();
-        }
-    }
-
-    public void createCityInfo(CityInfo ci) {
-        EntityManager em = getEntityManager();
-        try {
-            em.getTransaction().begin();
-            em.persist(ci);
-            em.getTransaction().commit();
-
-        } finally {
-            em.close();
-        }
-    }
-
-    public void createPhone(Phone p) {
-        EntityManager em = getEntityManager();
-        try {
-            em.getTransaction().begin();
-            em.persist(p);
-            em.getTransaction().commit();
-
-        } finally {
-            em.close();
-        }
-    }
-
-    public Company getCompany(int cvr) {
-        EntityManager em = getEntityManager();
-        Company company;
-        try {
-            company = em.find(Company.class, cvr);
-        } finally {
-            em.close();
-        }
-        return company;
-    }
-
-    public Address getAddress(int id) {
-        EntityManager em = getEntityManager();
-        Address address;
-        try {
-            address = em.find(Address.class, id);
-        } finally {
-            em.close();
-        }
-        return address;
-    }
-
-    public CityInfo getCityInfo(int zipCode) {
-        EntityManager em = getEntityManager();
-        CityInfo cityInfo;
-        try {
-            cityInfo = em.find(CityInfo.class, zipCode);
-        } finally {
-            em.close();
-        }
-        return cityInfo;
-    }
-
-    public Hobby getHobby(String name) {
-        EntityManager em = getEntityManager();
-        Hobby hobby;
-        try {
-            hobby = em.find(Hobby.class, name);
-        } finally {
-            em.close();
-        }
-        return hobby;
     }
 
     public Person getPerson(int id) {
@@ -210,58 +48,13 @@ public class EntityFacade {
             em.close();
         }
         return person;
-
     }
 
-    public Phone getPhone(int id) {
-        EntityManager em = getEntityManager();
-        Phone phone;
-        try {
-            phone = em.find(Phone.class, id);
-        } finally {
-            em.close();
-        }
-        return phone;
-    }
-
-    public void deleteAddress(int id) {
+    public void editPerson(Person person) {
         EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
-            em.remove(getAddress(id));
-            em.getTransaction().commit();
-        } finally {
-            em.close();
-        }
-    }
-
-    public void deletePhone(int id) {
-        EntityManager em = getEntityManager();
-        try {
-            em.getTransaction().begin();
-            em.remove(getPhone(id));
-            em.getTransaction().commit();
-        } finally {
-            em.close();
-        }
-    }
-
-    public void deleteCityInfo(int zipCode) {
-        EntityManager em = getEntityManager();
-        try {
-            em.getTransaction().begin();
-            em.remove(getCityInfo(zipCode));
-            em.getTransaction().commit();
-        } finally {
-            em.close();
-        }
-    }
-
-    public void deleteCompany(int cvr) {
-        EntityManager em = getEntityManager();
-        try {
-            em.getTransaction().begin();
-            em.remove(getCompany(cvr));
+            em.merge(person);
             em.getTransaction().commit();
         } finally {
             em.close();
@@ -279,11 +72,235 @@ public class EntityFacade {
         }
     }
 
-    public void deleteHobby(String name) {
+    /*
+    Company CRUD
+     */
+    public void createCompany(Company c) {
         EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
-            em.remove(getHobby(name));
+            em.persist(c);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+
+    public Company getCompany(int id) {
+        EntityManager em = getEntityManager();
+        Company company;
+        try {
+            company = em.find(Company.class, id);
+        } finally {
+            em.close();
+        }
+        return company;
+    }
+
+    public void editCompany(Company company) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.merge(company);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+
+    public void deleteCompany(int id) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.remove(getCompany(id));
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+
+    /*
+    Address CRUD
+     */
+    public void createAddress(Address a) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(a);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+
+    public Address getAddress(int id) {
+        EntityManager em = getEntityManager();
+        Address address;
+        try {
+            address = em.find(Address.class, id);
+        } finally {
+            em.close();
+        }
+        return address;
+    }
+
+    public void editAddress(Address address) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.merge(address);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+
+    public void deleteAddress(int id) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.remove(getAddress(id));
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+
+    /*
+    CityInfo CRUD
+     */
+    public void createCityInfo(CityInfo ci) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(ci);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+
+    public CityInfo getCityInfo(int zipCode) {
+        EntityManager em = getEntityManager();
+        CityInfo cityInfo;
+        try {
+            cityInfo = em.find(CityInfo.class, zipCode);
+        } finally {
+            em.close();
+        }
+        return cityInfo;
+    }
+
+    public void editCityInfo(CityInfo cityInfo) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.merge(cityInfo);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+
+    public void deleteCityInfo(int zipCode) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.remove(getCityInfo(zipCode));
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+
+    /*
+    Phone CRUD
+     */
+    public void createPhone(Phone p) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(p);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+
+    public Phone getPhone(int id) {
+        EntityManager em = getEntityManager();
+        Phone phone;
+        try {
+            phone = em.find(Phone.class, id);
+        } finally {
+            em.close();
+        }
+        return phone;
+    }
+
+    public void editPhone(Phone phone) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.merge(phone);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+
+    public void deletePhone(int id) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.remove(getPhone(id));
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+
+    /*
+    Hobby CRUD
+     */
+    public void createHobby(Hobby h) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(h);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+
+    public Hobby getHobby(int id) {
+        EntityManager em = getEntityManager();
+        Hobby hobby;
+        try {
+            hobby = em.find(Hobby.class, id);
+        } finally {
+            em.close();
+        }
+        return hobby;
+    }
+
+    public void editHobby(Hobby hobby) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.merge(hobby);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+
+    public void deleteHobby(int id) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.remove(getHobby(id));
             em.getTransaction().commit();
         } finally {
             em.close();
