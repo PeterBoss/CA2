@@ -1,11 +1,13 @@
 package Entity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -21,6 +23,8 @@ public class InfoEntity implements Serializable {
     private Integer id;
 
     private String email;
+    @OneToMany(mappedBy = "entity")
+    private List<Phone> phones;
 
     public InfoEntity() {
     }
