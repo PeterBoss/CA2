@@ -18,7 +18,7 @@ public class CityInfo implements Serializable {
     private int zipCode;
     private String city;
     @OneToMany
-    private List<Address> address;
+    private List<Address> addresses;
 
     public CityInfo() {
     }
@@ -39,12 +39,15 @@ public class CityInfo implements Serializable {
         this.city = city;
     }
 
-    public List<Address> getAddress() {
-        return address;
+    public List<Address> getAddresses() {
+        return addresses;
     }
 
-    public void setAddress(List<Address> address) {
-        this.address = address;
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
     }
-
+    
+    public void addAddress(Address address) {
+        addresses.add(address);
+    }
 }
