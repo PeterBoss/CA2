@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
  * @author Peter
  */
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class InfoEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
