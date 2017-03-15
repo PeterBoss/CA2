@@ -17,6 +17,7 @@ public class PhoneGenerator {
         for (int i = 0; i < amount; i++) {
             Phone p = new Phone();
             p.setDescription("test phone description");
+            p.setNumber("11111111");
             p.setEntity(null);
             phones.add(p);
         }
