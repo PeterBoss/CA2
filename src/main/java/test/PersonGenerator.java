@@ -1,9 +1,9 @@
 package test;
 
-import data.EntityFacade;
 import entity.Person;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
-import javax.persistence.EntityManagerFactory;
 
 /**
  *
@@ -11,32 +11,33 @@ import javax.persistence.EntityManagerFactory;
  */
 public class PersonGenerator {
     
-    EntityFacade fac;
 
-    public PersonGenerator(EntityManagerFactory emf) {
-        fac = new EntityFacade(emf);
+    public PersonGenerator() {
     }
     
-    String[] firstNames = {
+    private final String[] FIRSTNAMES = {
         "Bill", "Bob", "Ray"
     };
-    String[] lastNames = {
+    private final String[] LASTNAMES = {
         "Thompson", "Smith", "Vance"
     };
     
-    String[] emails = {
+    private final String[] EMAILS = {
         "test@mail.com", "otherTest@mail.com"
     };
     
-    Random rand = new Random();
+    private Random rand = new Random();
     
-    public void generate(int amount) {
+    public List<Person> getGeneratedPersons(int amount) {
+        List<Person> persons = new ArrayList();
         for (int i = 0; i < amount; i++) {
             Person p = new Person();
-            p.setFirstName(firstNames[rand.nextInt(firstNames.length)]);
-            p.setLastName(lastNames[rand.nextInt(lastNames.length)]);
-            fac.createPerson(p);
+            p.setFirstName(FIRSTNAMES[rand.nextInt(FIRSTNAMES.length)]);
+            p.setLastName(LASTNAMES[rand.nextInt(LASTNAMES.length)]);
+            p.setEmail(EMAILS[rand.nextInt(EMAILS.length)]);
+            persons.add(p);
         }
+        return persons;
     }
     
     
