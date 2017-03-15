@@ -2,14 +2,8 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import data.EntityFacade;
-import entity.Address;
-import entity.Hobby;
 import entity.Person;
-import entity.Phone;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Persistence;
 import javax.ws.rs.Consumes;
