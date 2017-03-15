@@ -1,11 +1,14 @@
 package entity;
 
+import static entity.Phone_.entity;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -21,20 +24,23 @@ public class Address implements Serializable {
     private String street;
     private String AdditionalInfo;
 
-    @ManyToOne
-    private InfoEntity entity;
-
-    public InfoEntity getEntity() {
-        return entity;
-    }
-
-    public void setEntity(InfoEntity entity) {
-        this.entity = entity;
-    }
+    @OneToMany(mappedBy = "address")
+    private List<InfoEntity> entities;
 
     @ManyToOne
     private CityInfo cityinfo;
 
+    public List<InfoEntity> getEntities() {
+        return entities;
+    }
+
+    public void setEntities(List<InfoEntity> entities) {
+        this.entities = entities;
+    }
+
+    public void addEntity(InfoEntity entity) {
+        entities.add(entity);
+    }
     public Address(CityInfo cityinfo) {
         this.cityinfo = cityinfo;
     }
