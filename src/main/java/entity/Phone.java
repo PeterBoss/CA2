@@ -30,7 +30,7 @@ public class Phone implements Serializable {
         return number;
     }
 
-    public void setId(String number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
@@ -48,6 +48,14 @@ public class Phone implements Serializable {
 
     public void setEntity(InfoEntity entity) {
         this.entity = entity;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
 }
