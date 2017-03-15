@@ -6,6 +6,7 @@ import entity.Company;
 import entity.Hobby;
 import entity.Person;
 import entity.Phone;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
@@ -48,6 +49,17 @@ public class EntityFacade {
             em.close();
         }
         return person;
+    }
+    
+    public List<Person> getAllPersons() {
+        EntityManager em = getEntityManager();
+        List<Person> persons;
+        try {
+            persons = em.createQuery("SELECT p FROM Person p").getResultList();
+        } finally {
+            em.close();
+        }
+        return persons;
     }
 
     public void editPerson(Person person) {
