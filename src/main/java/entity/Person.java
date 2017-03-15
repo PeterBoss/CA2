@@ -45,4 +45,10 @@ public class Person extends InfoEntity implements Serializable {
         return hobbies;
     }
 
+    public void setHobbies(List<Hobby> hobbies) {
+        this.hobbies = hobbies;
+    }
+    
+    
+
 }

@@ -2,9 +2,14 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import data.EntityFacade;
+import entity.Address;
+import entity.Hobby;
 import entity.Person;
+import entity.Phone;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Persistence;
 import javax.ws.rs.Consumes;
@@ -13,6 +18,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -40,6 +46,19 @@ public class PersonResource {
         List<Person> persons = fac.getAllPersons();
         return gson.toJson(persons);
     }
-    
+
+    @GET
+    @Path("complete/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getPerson(@PathParam("id") int id) {
+        return gson.toJson(fac.getPerson(id));
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void createPerson(String personJSON) {
+        Person p = gson.fromJson(personJSON, Person.class);
+        fac.createPerson(p);
+    }
 
 }

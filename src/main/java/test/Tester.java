@@ -1,5 +1,6 @@
 package test;
 
+import com.google.gson.Gson;
 import data.EntityFacade;
 import entity.Person;
 import javax.persistence.Persistence;
@@ -11,16 +12,21 @@ import javax.persistence.Persistence;
 public class Tester {
 
     public static void main(String[] args) {
-//        Persistence.generateSchema("pu", null);
+//
+//        String str = "{\"firstName\" : \"Peter\" , \"lastName\" : \"Thomsen\" }";
+//        Gson gson = new Gson();
+//        Person p = gson.fromJson(str, Person.class);
+//        System.out.println(p.getFirstName());
+//        
 
-    EntityFacade fac = new EntityFacade(Persistence.createEntityManagerFactory("pu"));
-    
-    Person p1 = new Person();
-    p1.setFirstName("Peter");
-    p1.setLastName("Thomsen");
-    
-    fac.createPerson(p1);
-    
+    PersonGenerator pgen = new PersonGenerator(Persistence.createEntityManagerFactory("pu"));
+    pgen.generate(10);
+
+//    EntityFacade fac = new EntityFacade(Persistence.createEntityManagerFactory("pu"));
+//    Person p = new Person();
+//    p.setFirstName("Test");
+//    fac.createPerson(p);
+
     }
     
 }
