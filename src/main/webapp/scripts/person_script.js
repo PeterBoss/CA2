@@ -6,3 +6,11 @@ function getAllPersons() {
         return text;
     });
 }
+function getPersonById(id) {
+    fetch("./api/person/complete/" + id, {method: "GET"})
+            .then(function (response) {
+                return response.text();
+            }).then(function (text) {
+        return text;
+    });
+}
