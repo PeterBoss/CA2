@@ -92,7 +92,7 @@ public class EntityFacade {
     /*
     Company CRUD
      */
-    public void createCompany(Company c) {
+    public Company createCompany(Company c) {
         EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
@@ -101,6 +101,7 @@ public class EntityFacade {
         } finally {
             em.close();
         }
+        return c;
     }
 
     public Company getCompany(int id) {
@@ -114,7 +115,7 @@ public class EntityFacade {
         return company;
     }
 
-    public void editCompany(Company company) {
+    public Company editCompany(Company company) {
         EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
@@ -123,6 +124,7 @@ public class EntityFacade {
         } finally {
             em.close();
         }
+        return company;
     }
 
     public List<Company> getAllcompanies() {
@@ -137,15 +139,18 @@ public class EntityFacade {
 
     }
 
-    public void deleteCompany(int id) {
+    public Company deleteCompany(int id) {
         EntityManager em = getEntityManager();
+        Company company;
         try {
             em.getTransaction().begin();
-            em.remove(getCompany(id));
+            company = em.find(Company.class, id);
+            em.remove(company);
             em.getTransaction().commit();
         } finally {
             em.close();
         }
+        return company;
     }
 
     /*

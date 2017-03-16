@@ -9,13 +9,15 @@ import javax.persistence.Persistence;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  * REST Web Service
@@ -36,23 +38,42 @@ public class CompanyResource {
     @GET
     @Path("complete")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getAllcompanys() {
+    public Response getAllcompanys() {
         List<Company> companies = fac.getAllcompanies();
-        return gson.toJson(companies);
+        return Response.status(Response.Status.OK).entity(gson.toJson(companies)).build();
     }
 
     @GET
     @Path("complete/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getCompany(@PathParam("id") int id) {
-        return gson.toJson(fac.getCompany(id));
+    public Response getCompany(@PathParam("id") int id) {
+        Company company = fac.getCompany(id);
+        return Response.status(Response.Status.OK).entity(gson.toJson(company)).build();
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void createCompany(String companyJSON) {
-        Company c = gson.fromJson(companyJSON, Company.class);
-        fac.createCompany(c);
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response createCompany(String companyJSON) {
+        Company company = fac.createCompany(gson.fromJson(companyJSON, Company.class));
+        return Response.status(Response.Status.OK).entity(company).build();
+        
+    }
+    
+    @DELETE
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteCompany(@PathParam("id") int id) {
+        Company company = fac.deleteCompany(id);
+        return Response.status(Response.Status.OK).entity(company).build();
+    }
+    
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response editCompany(String companyJSON) {
+        Company company = fac.editCompany(gson.fromJson(companyJSON, Company.class));
+        return Response.status(Response.Status.OK).entity(company).build();
     }
 
 }
