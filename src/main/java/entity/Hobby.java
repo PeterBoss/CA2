@@ -1,6 +1,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,7 +22,7 @@ public class Hobby implements Serializable {
     private String name;
     private String description;
     @ManyToMany(mappedBy = "hobbies")
-    private List<Person> persons;
+    private List<Person> persons = new ArrayList();
 
     public Hobby() {
     }

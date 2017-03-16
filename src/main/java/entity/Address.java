@@ -1,6 +1,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +25,7 @@ public class Address implements Serializable {
     private String AdditionalInfo;
 
     @OneToMany(mappedBy = "address")
-    private List<InfoEntity> entities;
+    private List<InfoEntity> entities = new ArrayList();
 
     @ManyToOne
     private CityInfo cityinfo;
