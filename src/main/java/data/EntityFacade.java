@@ -120,15 +120,15 @@ public class EntityFacade {
         }
     }
 
-    public List<Company> getAllcompanys() {
+    public List<Company> getAllcompanies() {
         EntityManager em = getEntityManager();
-        List<Company> companys;
+        List<Company> companies;
          try {
-            companys = em.createQuery("SELECT c FROM Company c").getResultList();
+            companies = em.createQuery("SELECT c FROM Company c").getResultList();
         } finally {
             em.close();
         }
-        return companys;
+        return companies;
 
     }
 

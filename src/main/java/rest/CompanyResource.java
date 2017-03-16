@@ -37,8 +37,8 @@ public class CompanyResource {
     @Path("complete")
     @Produces(MediaType.APPLICATION_JSON)
     public String getAllcompanys() {
-        List<Company> companys = fac.getAllcompanys();
-        return gson.toJson(companys);
+        List<Company> companies = fac.getAllcompanies();
+        return gson.toJson(companies);
     }
 
     @GET
