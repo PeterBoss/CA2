@@ -24,7 +24,7 @@ function createPerson(personJSON) {
     }).then(function (response) {
         return response.text();
     }).then(function (text) {
-        return text;  //propably empty since the rest method is returns void
+        return text; 
     });
 }
 
@@ -35,12 +35,18 @@ function testCreatePerson() {
             'Accept': 'application/json',
             'Content-Type': 'application/json'},
         method: "POST",
-        body: JSON.stringify({"firstName" : "Peter"})
+        body: JSON.stringify({"firstName" : "Peter", "lastName" : "Thomsen", "email" : "test@mail.com", "phones" : [{"number" : "45698712", "description" : "test desc"}]})
     }).then(function (response) {
         return response.text();
     }).then(function (text) {
         console.log(text);
     });
 }
+
+//var button = document.getElementById("testButton");
+//
+//button.addEventListener("click", function(evt) {
+//    getAllPersons();
+//});
 
 //window.addEventListener("load",testCreatePerson);

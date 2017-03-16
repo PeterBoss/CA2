@@ -29,7 +29,7 @@ public class EntityFacade {
     /*
     Person CRUD
      */
-    public void createPerson(Person p) {
+    public Person createPerson(Person p) {
         EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
@@ -38,6 +38,7 @@ public class EntityFacade {
         } finally {
             em.close();
         }
+        return p;
     }
 
     public Person getPerson(int id) {
@@ -62,7 +63,7 @@ public class EntityFacade {
         return persons;
     }
 
-    public void editPerson(Person person) {
+    public Person editPerson(Person person) {
         EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
@@ -71,17 +72,21 @@ public class EntityFacade {
         } finally {
             em.close();
         }
+        return person;
     }
 
-    public void deletePerson(int id) {
+    public Person deletePerson(int id) {
         EntityManager em = getEntityManager();
+        Person p;
         try {
             em.getTransaction().begin();
-            em.remove(getPerson(id));
+            p = em.find(Person.class, id);
+            em.remove(p);
             em.getTransaction().commit();
         } finally {
             em.close();
         }
+        return p;
     }
 
     /*
@@ -123,7 +128,7 @@ public class EntityFacade {
     public List<Company> getAllcompanies() {
         EntityManager em = getEntityManager();
         List<Company> companies;
-         try {
+        try {
             companies = em.createQuery("SELECT c FROM Company c").getResultList();
         } finally {
             em.close();
