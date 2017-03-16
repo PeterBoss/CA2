@@ -4,6 +4,7 @@ import entity.InfoEntity;
 import entity.Person;
 import entity.Phone;
 import java.util.List;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -24,21 +25,22 @@ public class Tester {
 //    p.setFirstName("Test");
 //    fac.createPerson(p);
         
-        PhoneGenerator phoneGen = new PhoneGenerator();
-        PersonGenerator personGen = new PersonGenerator();
-        
-        
-        List<Phone> phones = phoneGen.getGeneratedPhones(15);
-        List<Person> persons = personGen.getGeneratedPersons(20);
-        
-        RelationshipHandler handler = new RelationshipHandler();
-        
-        handler.assignPhonesToPersons(phones, persons);
-        
-        for (Phone p : phones) {
-            System.out.println(p.getEntity().getId());
-        }
-
+//        PhoneGenerator phoneGen = new PhoneGenerator();
+//        PersonGenerator personGen = new PersonGenerator();
+//        
+//        
+//        List<Phone> phones = phoneGen.getGeneratedPhones(15);
+//        List<Person> persons = personGen.getGeneratedPersons(20);
+//        
+//        RelationshipHandler handler = new RelationshipHandler();
+//        
+//        handler.assignPhonesToPersons(phones, persons);
+//        
+//        for (Phone p : phones) {
+//            System.out.println(p.getEntity().getId());
+//        }
+    
+    Persistence.generateSchema("pu", null);
     }
     
 }

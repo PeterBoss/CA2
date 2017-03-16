@@ -1,11 +1,5 @@
 package data;
 
-import entity.Person;
-import javax.persistence.Persistence;
-import static org.junit.Assert.assertEquals;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
 /**
  *
  * @author Peter

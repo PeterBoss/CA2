@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="col-md-8">
+            <div class ="row" >
+                <table class="table table-striped" >
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>cvr</th>
+                            <th>NumEmployees</th>
+                            <th>marketValue</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="CompanyTable">
+
+                    </tbody>
+                </table> 
+
+            </div>
+            <script>
+                //var tableBody = document.getElementById("CompanyTable");
+                var url = "./api/company/complete";
+                var conf = {method: 'get'};
+
+                var promise = fetch(url, conf);
+                promise.then(function (response) {
+                    return response.text();
+                }).then(function (text) {
+                   // alert(text);
+                    var companyArray = JSON.parse(text);
+                    console.log(companyArray);
+                    for (var i = 0; i < companyArray.length; i++) {
+                        console.log(i);
+                        tabBody = document.getElementsByTagName("tbody").item(0);
+                        row = document.createElement("tr");
+                        
+                        cell1 = document.createElement("td");
+                        cell2 = document.createElement("td");
+                        cell3 = document.createElement("td");
+                        cell4 = document.createElement("td");
+                        cell5 = document.createElement("td");
+                        
+                        textnode1 = document.createTextNode(companyArray[i].name);
+                        textnode2 = document.createTextNode(companyArray[i].NumEmployees);
+                        textnode3 = document.createTextNode(companyArray[i].marketValue);
+                        textnode4 = document.createTextNode(companyArray[i].id);
+                        textnode5 = document.createTextNode(companyArray[i].phones);
+                        
+                        cell1.appendChild(textnode1);
+                        cell2.appendChild(textnode2);
+                        cell3.appendChild(textnode3);
+                        cell4.appendChild(textnode4);
+                        cell5.appendChild(textnode5);
+                        
+                        row.appendChild(cell1);
+                        row.appendChild(cell2);
+                        row.appendChild(cell3);
+                        row.appendChild(cell4);
+                        row.appendChild(cell5);
+                        
+                        tabBody.appendChild(row);
+                    }
+                }
+                );
+        
+            </script>
+    </body>
+</html>
