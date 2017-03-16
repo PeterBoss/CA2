@@ -33,17 +33,25 @@ public class CompanyResource {
     public CompanyResource() {
     }
 
-   @GET
+    @GET
+    @Path("complete")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAllcompanys() {
+        List<Company> companys = fac.getAllcompanys();
+        return gson.toJson(companys);
+    }
+
+    @GET
     @Path("complete/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public String getCompany(@PathParam("id") int id) {
         return gson.toJson(fac.getCompany(id));
     }
 
-       @POST
+    @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public void createCompany(String companyJSON) {
-        Company c = gson.fromJson(companyJSON,Company.class);
+        Company c = gson.fromJson(companyJSON, Company.class);
         fac.createCompany(c);
     }
 

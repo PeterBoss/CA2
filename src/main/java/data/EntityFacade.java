@@ -50,7 +50,7 @@ public class EntityFacade {
         }
         return person;
     }
-    
+
     public List<Person> getAllPersons() {
         EntityManager em = getEntityManager();
         List<Person> persons;
@@ -118,6 +118,18 @@ public class EntityFacade {
         } finally {
             em.close();
         }
+    }
+
+    public List<Company> getAllcompanys() {
+        EntityManager em = getEntityManager();
+        List<Company> companys;
+         try {
+            companys = em.createQuery("SELECT c FROM Company c").getResultList();
+        } finally {
+            em.close();
+        }
+        return companys;
+
     }
 
     public void deleteCompany(int id) {
