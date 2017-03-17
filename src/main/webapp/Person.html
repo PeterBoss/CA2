@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="col-md-8">
+            <div class ="row" >
+                <table class="table table-striped" >
+                    <thead>
+                        <tr>
+                            <th>First name</th>
+                            <th>Last name</th>
+                            <th>Hobby</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="CompanyTable">
+
+                    </tbody>
+                </table> 
+
+            </div>
+        </div>
+        <script>
+            //var tableBody = document.getElementById("CompanyTable");
+            var url = "./api/person/complete";
+            var conf = {method: 'get'};
+
+            var promise = fetch(url, conf);
+            promise.then(function (response) {
+                return response.text();
+            }).then(function (text) {
+                // alert(text);
+                var personArray = JSON.parse(text);
+                console.log(text);
+                // console.log(i);
+                tBody = document.getElementsByTagName("tbody").item(0);
+                newArray = personArray.map((x) => "<tr><td>" + x.firstName + "</td><td>" + x.lastName + "</td><td>" + x.hobbies + "</td></tr>")
+                tBody.innerHTML = newArray.join("");
+
+            }
+            );
+        </script>
+    </body>
+</html>
