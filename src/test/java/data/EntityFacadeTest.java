@@ -1,13 +1,15 @@
 package data;
 
+import javax.persistence.Persistence;
+
 /**
  *
  * @author Peter
  */
 public class EntityFacadeTest {
     
-//    public EntityFacadeTest() {
-//        Persistence.generateSchema("testpu", null);
+    public EntityFacadeTest() {
+//        Persistence.generateSchema("pu-test", null);
 //    }
 //    
 //    @Test
@@ -19,7 +21,7 @@ public class EntityFacadeTest {
 //        
 //        assertEquals(p.getFirstName(), "Peter");
 //        
-//    }
+    }
     
  
 }
